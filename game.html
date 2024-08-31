@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        body{
+            font-family: Arial, Helvetica, sans-serif;
+            background: rgb(211, 209, 223);
+        }
+        button{
+            background: skyblue;
+            color: white;
+            padding: 10px 0;
+            width: 5rem;
+            border-radius: 1rem;
+            margin: 4px;
+            font-weight: bold;
+        }
+        button:hover{
+            background-color: black;
+            transition: 0.5s;
+        }
+        .reset{
+            background-color: red;
+        }
+        .reset:hover{
+            background-color: black;
+        }
+        .container{
+            height: 400px;
+        }
+        .row{
+            display: flex;
+            flex-wrap: nowrap;
+            justify-content: center;
+        }
+        .space{
+            padding-left: 15px;
+        }
+        /* .column{
+            display: table-cell;
+        } */
+    </style>
+</head>
+<body>
+    <center>
+        <h1><u>Rock Paper Sessor Game</u></h1>
+        <br><br>
+        <div class="container">
+            <div class="row">
+        <h2>Computer:</h2>
+        <h2 class="space" id="computer1"></h2>
+    </div>
+        <div class="row">
+        <h2>You:</h2>
+        <h2 class="space" id="output"></h2>
+    </div>
+        <h1>Result</h1>
+
+        <p id="output1"></p>
+
+        <button onclick="rockFunction()" id="rockInput" value="rock">Rock</button>
+        <button onclick="paperFunction()" id="paperInput" value="paper">Paper</button>
+        <button onclick="sessorFunction()" id="sessorInput" value="sessor">Sessor</button>
+        </div>
+        <button class="reset" onclick="refreshPage()">Reset</button>
+        <script>
+            let random = Math.floor(Math.random() * 10);
+
+            if (random == 0) {
+                random = 0;
+            }
+            else if (random % 2 == 0) {
+                random = 2;
+            }
+            else{
+                random = 5;
+            }
+            let computer;
+            if (random == 0) {
+                 computer = "Rock";
+            }
+            else if (random % 2 == 0) {
+                 computer = "Sessor";
+            }
+            else{
+                 computer = "Paper";
+            }
+
+            // check if the random number accept 0
+            
+            function rockFunction() {
+                let inputField = document.getElementById("rockInput");
+                inputValue = 0;
+                if (random == inputValue) {
+                    document.getElementById('output1').innerHTML = "Oops let's try again!";
+                }
+                else if(random == 2 && inputValue == 0){
+                    document.getElementById('output1').innerHTML = "You Won!";
+                }
+                else if(random == 5 && inputValue == 0){
+                    document.getElementById('output1').innerHTML = "Computer Won!";
+                }
+                document.getElementById('output').innerHTML = inputField.value;
+                document.getElementById('computer1').innerHTML = computer;
+            }
+            function paperFunction() {
+                let inputField = document.getElementById("paperInput");
+                inputValue = 5;
+                if (random == inputValue) {
+                    document.getElementById('output1').innerHTML = "Oops let's try again!";
+                }
+                else if(random == 0 && inputValue == 5){
+                    document.getElementById('output1').innerHTML = "You Won!";
+                }
+                else if(random == 2 && inputValue == 5){
+                    document.getElementById('output1').innerHTML = "Computer Won!";
+                }
+                document.getElementById('output').innerHTML = inputField.value;
+                document.getElementById('computer1').innerHTML = computer;
+            }
+            function sessorFunction() {
+                let inputField = document.getElementById("sessorInput");
+                inputValue = 2;
+                if (random == inputValue) {
+                    document.getElementById('output1').innerHTML = "Oops let's try again!";
+                }
+                else if(random == 0 && inputValue == 2){
+                    document.getElementById('output1').innerHTML = "You Won!";
+                }
+                else if(random == 5 && inputValue == 2){
+                    document.getElementById('output1').innerHTML = "Computer Won!";
+                }
+                document.getElementById('output').innerHTML = inputField.value;
+                document.getElementById('computer1').innerHTML = computer;
+            }
+
+            function refreshPage(){
+                window.location.reload();
+            }
+        </script>
+    </center>
+    
+</body>
+</html>
